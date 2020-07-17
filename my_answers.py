@@ -72,7 +72,7 @@ class NeuralNetwork(object):
 
         # TODO: Output layer - Replace these values with your calculations.
         final_inputs = np.matmul(hidden_outputs,self.weights_hidden_to_output) # signals into final output layer
-        final_outputs = self.activation_function(final_inputs) # signals from final output layer
+        final_outputs = final_inputs # signals from final output layer
         
         return final_outputs, hidden_outputs
 
@@ -93,7 +93,7 @@ class NeuralNetwork(object):
         error = y - final_outputs
 
         # TODO: Calculate error term for the output unit
-        output_error_term = error * final_outputs * (1-final_outputs)
+        output_error_term = error 
 
         ## propagate errors to hidden layer
 
@@ -144,7 +144,7 @@ class NeuralNetwork(object):
 
         # TODO: Output layer - Replace these values with your calculations.
         final_inputs = np.matmul(hidden_outputs,self.weights_hidden_to_output) # signals into final output layer
-        final_outputs = self.activation_function(final_inputs) # signals from final output layer
+        final_outputs = final_inputs # signals from final output layer
         
         
         
