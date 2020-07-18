@@ -30,7 +30,7 @@ class NeuralNetwork(object):
             """
             Calculate sigmoid
             """
-            return 1 / (1 + np.exp(-x))
+            return 1.0 / (1.0 + np.exp(-x))
         self.activation_function = sigmoid
                     
 
@@ -67,11 +67,11 @@ class NeuralNetwork(object):
         #### Implement the forward pass here ####
         ### Forward pass ###
         # TODO: Hidden layer - Replace these values with your calculations.
-        hidden_inputs = np.matmul(X,self.weights_input_to_hidden) # signals into hidden layer
+        hidden_inputs = np.dot(X,self.weights_input_to_hidden) # signals into hidden layer
         hidden_outputs = self.activation_function(hidden_inputs) # signals from hidden layer
 
         # TODO: Output layer - Replace these values with your calculations.
-        final_inputs = np.matmul(hidden_outputs,self.weights_hidden_to_output) # signals into final output layer
+        final_inputs = np.dot(hidden_outputs,self.weights_hidden_to_output) # signals into final output layer
         final_outputs = final_inputs # signals from final output layer
         
         return final_outputs, hidden_outputs
@@ -125,8 +125,8 @@ class NeuralNetwork(object):
             n_records: number of records
 
         '''
-        self.weights_hidden_to_output += self.lr * delta_weights_h_o # update hidden-to-output weights with gradient descent step
-        self.weights_input_to_hidden += self.lr * delta_weights_i_h # update input-to-hidden weights with gradient descent step
+        self.weights_hidden_to_output += (self.lr * delta_weights_h_o)/n_records # update hidden-to-output weights with gradient descent step
+        self.weights_input_to_hidden += (self.lr * delta_weights_i_h)/n_records # update input-to-hidden weights with gradient descent step
 
     def run(self, features):
         ''' Run a forward pass through the network with input features 
@@ -154,7 +154,7 @@ class NeuralNetwork(object):
 #########################################################
 # Set your hyperparameters here
 ##########################################################
-iterations = 100
-learning_rate = 0.1
-hidden_nodes = 2
+iterations = 5000 
+learning_rate = 0.5
+hidden_nodes = 7
 output_nodes = 1
